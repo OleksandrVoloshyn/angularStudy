@@ -1,0 +1,4 @@
+<div>
+  {{comment.id}}  -- {{comment.email}}
+  <a [routerLink]="['comments-details', comment.id]" [state]={data:comment}>Details</a>
+</div>
