@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from "@angular/common/http";
-import {RouterModule} from "@angular/router";
+import {Route, RouterModule} from "@angular/router";
 
 import {AppComponent} from './app.component';
 import {UsersComponent} from './components/users/users.component';
@@ -14,6 +14,26 @@ import {PostDetailsComponent} from './components/post-details/post-details.compo
 import {CommentsComponent} from './components/comments/comments.component';
 import {CommentComponent} from './components/comment/comment.component';
 import {CommentDetailsComponent} from './components/comment-details/comment-details.component';
+
+const routes: Route[] = [
+  {path: '', redirectTo: 'home-page', pathMatch: 'full'},
+  {path: 'home-page', component: HomeComponent},
+  {
+    path: 'users-page', component: UsersComponent, children: [
+      {path: 'users-details/:id', component: UserDetailsComponent}
+    ]
+  },
+  {
+    path: 'posts-page', component: PostsComponent, children: [
+      {path: 'posts-details/:id', component: PostDetailsComponent}
+    ]
+  },
+  {
+    path: 'comments-page', component: CommentsComponent, children: [
+      {path: 'comments-details/:id', component: CommentDetailsComponent}
+    ]
+  }
+]
 
 @NgModule({
   declarations: [
@@ -32,25 +52,7 @@ import {CommentDetailsComponent} from './components/comment-details/comment-deta
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      {path: '', redirectTo: 'home-page', pathMatch: 'full'},
-      {path: 'home-page', component: HomeComponent},
-      {
-        path: 'users-page', component: UsersComponent, children: [
-          {path: 'users-details/:id', component: UserDetailsComponent}
-        ]
-      },
-      {
-        path: 'posts-page', component: PostsComponent, children: [
-          {path: 'posts-details/:id', component: PostDetailsComponent}
-        ]
-      },
-      {
-        path: 'comments-page', component: CommentsComponent, children: [
-          {path: 'comments-details/:id', component: CommentDetailsComponent}
-        ]
-      }
-    ])
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

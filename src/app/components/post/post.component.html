@@ -1,4 +1,4 @@
 <div>
   {{post.id}} -- {{post.title}}
-  <a [routerLink]="['posts-details',post.id]">Details</a>
+  <a [routerLink]="['posts-details',post.id]" [state]={data:post}>Details</a>
 </div>
