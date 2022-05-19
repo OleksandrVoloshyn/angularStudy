@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 
 import {PostsDataService} from "../../posts-services/posts-data.service";
-import {IPost} from "../../../models";
+import {IPost} from "../../../../models";
 
 @Component({
   selector: 'app-post-details',
