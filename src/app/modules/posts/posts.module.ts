@@ -4,9 +4,10 @@ import {HttpClientModule} from "@angular/common/http";
 
 import {PostsRoutingModule} from './posts-routing.module';
 import {PostsComponent} from './posts-components/posts/posts.component';
-import {PostsDataService} from "./posts-services/posts-data.service";
+import {PostResolver, PostsDataService, PostsResolver} from "./posts-services";
 import { PostComponent } from './posts-components/post/post.component';
 import { PostDetailsComponent } from './posts-components/post-details/post-details.component';
+import {PostGuard} from "./posts-services";
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { PostDetailsComponent } from './posts-components/post-details/post-detai
     PostsRoutingModule,
     HttpClientModule
   ],
-  providers: [PostsDataService]
+  providers: [PostsDataService, PostsResolver, PostResolver, PostGuard]
 })
 export class PostsModule {
 }
