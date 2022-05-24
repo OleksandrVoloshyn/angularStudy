@@ -4,3 +4,4 @@
   <li><a [routerLink]="['posts']">posts</a></li>
   <li><a [routerLink]="['comments']">comments</a></li>
 </ul>
+<div *ngIf="loading$|async">Loading...</div>

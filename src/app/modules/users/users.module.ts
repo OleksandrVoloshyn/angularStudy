@@ -4,7 +4,7 @@ import {HttpClientModule} from "@angular/common/http";
 
 import {UsersComponent} from './users-components/users/users.component';
 import {UsersRoutingModule} from './users-routing.module';
-import {UserDataService, UserGuard, UserResolver, UsersResolver} from "./users-services";
+import {UserDataService, UserGuard, UserResolver} from "./users-services";
 import {UserComponent} from './users-components/user/user.component';
 import {UserDetailsComponent} from './users-components/user-details/user-details.component';
 
@@ -20,7 +20,7 @@ import {UserDetailsComponent} from './users-components/user-details/user-details
     UsersRoutingModule,
     HttpClientModule
   ],
-  providers: [UserDataService, UsersResolver, UserResolver, UserGuard]
+  providers: [UserDataService, UserResolver, UserGuard]
 })
 export class UsersModule {
 }

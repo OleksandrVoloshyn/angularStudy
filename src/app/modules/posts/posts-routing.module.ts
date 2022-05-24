@@ -3,12 +3,11 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {PostsComponent} from "./posts-components/posts/posts.component";
 import {PostDetailsComponent} from "./posts-components/post-details/post-details.component";
-import {PostGuard, PostResolver, PostsResolver} from "./posts-services";
+import {PostGuard, PostResolver} from "./posts-services";
 
 const routes: Routes = [
   {
     path: '', component: PostsComponent,
-    resolve: {postsData: PostsResolver},
     canActivate: [PostGuard],
     canDeactivate: [PostGuard],
     children: [

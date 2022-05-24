@@ -3,12 +3,11 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {CommentsComponent} from "./comments-components/comments/comments.component";
 import {CommentDetailsComponent} from "./comments-components/comment-details/comment-details.component";
-import {CommentGuard, CommentResolver, CommentsResolver} from "./comments-services";
+import {CommentGuard, CommentResolver} from "./comments-services";
 
 const routes: Routes = [
   {
-    path: '', component: CommentsComponent, resolve: {commentsData: CommentsResolver},
-    canActivate: [CommentGuard], children: [
+    path: '', component: CommentsComponent, canActivate: [CommentGuard], children: [
       {path: ':id', component: CommentDetailsComponent, resolve: {commentData: CommentResolver}}
     ]
   }
