@@ -1,17 +1,26 @@
-import {NgModule} from "@angular/core";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 
-import {HomeComponent} from "./app-components/home/home.component";
+import {MainLayoutComponent} from "./layouts";
+import {LoginComponent} from "./components/login/login.component";
+import {RegisterComponent} from "./components/register/register.component";
+import {CarsComponent} from "./components/cars/cars.component";
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'users', loadChildren: () => import('./modules').then(m => m.UsersModule)},
-  {path: 'posts', loadChildren: () => import('./modules').then(m => m.PostsModule)},
-  {path: 'comments', loadChildren: () => import('./modules').then(m => m.CommentsModule)}
+  {
+    path: '', component: MainLayoutComponent, children: [
+      {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegisterComponent},
+      {path: 'cars', component: CarsComponent}
+    ]
+  }
 ]
 
 @NgModule({
+  declarations: [],
   imports: [
+    CommonModule,
     RouterModule.forRoot(routes)
   ],
   exports: [
