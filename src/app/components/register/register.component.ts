@@ -30,10 +30,10 @@ export class RegisterComponent implements OnInit {
   register(): void {
     const rawValue = this.form.getRawValue();
     delete rawValue.confirmPassword
-    this.authService.register(rawValue).subscribe(
-      () => this.router.navigate(['login']),
-      error => this.userNameError = error.error.username[0]
-    )
+    this.authService.register(rawValue).subscribe({
+      next: () => this.router.navigate(['login']),
+      error: error => this.userNameError = error.error.username[0]
+    })
   }
 
   _checkPasswords(form: AbstractControl): ValidationErrors | null {
