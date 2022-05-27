@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-
+import {DataService} from "./services";
 import {IUser} from "./interfaces";
 
 @Component({
@@ -8,16 +8,12 @@ import {IUser} from "./interfaces";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  user: IUser
+  user: IUser;
 
-  constructor() {
+  constructor(private dataService: DataService) {
   }
 
   ngOnInit(): void {
-  }
-
-  catch(user: IUser): void {
-    console.log('app',user)
-    this.user = user
+    this.dataService.storage.subscribe(value => this.user = value)
   }
 }
