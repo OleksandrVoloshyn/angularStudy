@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "./services";
-import {Router} from "@angular/router";
+
+import {IUser} from "./interfaces";
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,16 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {
+  user: IUser
+
+  constructor() {
   }
 
   ngOnInit(): void {
-    if(this.authService.isAuthorization()){
-      this.router.navigate(['cars'])
-    }
+  }
+
+  catch(user: IUser): void {
+    console.log('app',user)
+    this.user = user
   }
 }
